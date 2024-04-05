@@ -1,0 +1,88 @@
+def mov():
+    global direccion
+    global pasos
+    direccion = input_int("¿En que direccion desea mover el robot? 1. Derecha  2. Izquierda 3. Derecho  4. Atras")
+    pasos = input_int("¿Cuantos pasos va a dar el robot en esa direccion?")
+
+def cambioTurno():
+    global respuesta
+    respuesta = input_int("Digite 1. para seguir en su turno / Digite 2. para finalizar el turno / Digite 3. para finalizar el juego")
+
+robot1 = UsedRobot(1, 1, beepers=20, colour="Blue")
+robot2 = UsedRobot(9, 1, beepers=20, colour="Yellow")
+robot2.turn_left()
+robot2.turn_left()
+cant_beepers = 10
+
+#Robot1 = input_string("Escriba el nombre del robot uno")
+#Robot2 = input_string("Escriba el nombre del robot dos")
+
+turno = 1
+while ( turno != 3 ):
+
+    #Turno 1 mueve el robot 1
+    if turno == 1:
+        mov()
+        if direccion == 1:
+            robot1.turn_left()
+            robot1.turn_left()
+            robot1.turn_left()
+            while ( pasos > 0 ):
+                robot1.move()
+                pasos = pasos - 1
+        elif direccion == 2:
+            robot1.turn_left()
+            while ( pasos > 0 ):
+                robot1.move()
+                pasos = pasos - 1
+        elif direccion == 3:
+            while ( pasos > 0 ):
+                robot1.move()
+                pasos = pasos - 1
+        elif direccion == 4:
+            robot1.turn_left()
+            robot1.turn_left()
+            while ( pasos > 0 ):
+                robot1.move()
+                pasos = pasos - 1
+        cambioTurno()
+        if respuesta == 2:
+            turno = 2
+            if(not robot1.on_beeper()):
+                robot1.put_beeper()
+        elif respuesta == 3:
+            turno = 3
+#Turno 2 mueve el robot 2
+    if turno == 2:
+        mov()
+        if direccion == 1:
+            robot2.turn_left()
+            robot2.turn_left()
+            robot2.turn_left()
+            while ( pasos > 0 ):
+                robot2.move()
+                pasos = pasos - 1
+        elif direccion == 2:
+            robot2.turn_left()
+            while ( pasos > 0 ):
+                robot2.move()
+                pasos = pasos - 1
+        elif direccion == 3:
+            while ( pasos > 0 ):
+                robot2.move()
+                pasos = pasos - 1
+        elif direccion == 4:
+            robot2.turn_left()
+            robot2.turn_left()
+            while ( pasos > 0 ):
+                robot2.move()
+                pasos = pasos - 1
+        cambioTurno()
+        if respuesta == 2:
+            turno = 1
+            if(not robot2.on_beeper()):
+                robot2.put_beeper()
+                robot2.put_beeper()
+        elif respuesta == 3:
+            turno = 3
+turn_off()

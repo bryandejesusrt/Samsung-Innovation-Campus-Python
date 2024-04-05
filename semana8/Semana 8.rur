@@ -1,0 +1,33 @@
+sw = 1
+count = 0
+
+def p1():
+    pick_beeper()
+
+def p2():
+    pick_beeper()
+
+while sw == 1:
+    move()
+    if on_beeper():
+        count += 1
+        p1()
+        turn_left()
+        if count == 4:
+            turn_left()
+            while front_is_clear():
+                move()
+                if not front_is_clear():
+                    turn_left()
+                if not front_is_clear():
+                    turn_left()
+                    turn_left()
+                    
+            turn_left()
+            count = 0
+        elif on_beeper():
+            p2()
+            if on_beeper():
+                p1()
+                turn_left()
+                turn_left()

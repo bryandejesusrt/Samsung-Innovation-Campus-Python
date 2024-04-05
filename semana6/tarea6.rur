@@ -1,0 +1,53 @@
+#La fucion on_beeper()
+#Me indica si el robot se ha encontrado con un beeper
+
+import random
+
+print(on_beeper())
+
+while (on_beeper() == False):
+    move()
+    
+cantidadBeepers = random.randrange(1,5)
+
+print("Esta es la cantidad de beepers")
+print(cantidadBeepers)
+
+#Funciones
+def GirarDerecha():
+    repeat(turn_left,3)#Girar 3 veces a la izquierda, gira a la derecha
+    movimiento()
+def GirarIzquierda():
+    turn_left()
+    movimiento()
+def LineaRecta():
+    #En cuanto Giro no tenemos que hacer nada
+    movimiento()
+    
+def Devolver():
+    repeat(turn_left,2)
+    movimiento()
+    
+def movimiento():
+    while front_is_clear():        
+        move()
+    
+
+#Condicionales
+if cantidadBeepers == 1:
+    #Girar derecha
+    GirarDerecha()
+    
+elif cantidadBeepers == 2:
+    #Girar a la izquierda
+    GirarIzquierda()
+    
+elif cantidadBeepers == 3:
+    #Linea Recta 
+    LineaRecta()
+    
+elif cantidadBeepers == 4:
+    #Devolver
+        Devolver()
+    
+turn_off()
